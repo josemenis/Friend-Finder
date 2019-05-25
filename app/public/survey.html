@@ -165,22 +165,23 @@
         <br>
         <br>
 
-     <!-- Submit Button -->
-     <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i>
-        Submit</button>
-   
-       <hr>
-       <footer class="footer">
-         <div class="container">
-           <p><a href="../data/friends.js">API Friends List</a> | <a href="https://github.com/josemenis/Friend-Finder">GitHub Repo</a></p>
-         </div>
-       </footer>
-   
-     </div>
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary btn-lg btn-block" id="submitBtn"><i class="fa fa-check-circle"
+                aria-hidden="true"></i>
+            Submit</button>
 
+        <hr>
+        <footer class="footer">
+            <div class="container">
+                <p><a href="/api/testfriends">API Friends List</a> | <a
+                        href="https://github.com/josemenis/Friend-Finder">GitHub Repo</a></p>
+            </div>
+        </footer>
 
     </div>
 
+
+    </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -193,5 +194,38 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 </body>
-
 </html>
+
+
+<!-- BELOW CODE IS CRITICAL. IT HANDLES HOW FORM DATA IS SENT TO OUR SERVER -->
+<script type="text/javascript">
+    // In this code below we create the Front-end JavaScript which "POSTS" our form data to our express server.
+    // In essence, when the user hits submit, javascript grabs all of the fields then sends a post request to our api
+    // Our api recognizes the route (/api/testfriends)... and then runs the associated code (found in api-routes.js).
+    // In this case the associated code "saves" the data to the friends.js file.
+    document.querySelector("#submitBtn").addEventListener("click", function(event) {
+    event.preventDefault();
+
+    // Here we grab the form elements
+    var surveyData = {
+        name : document.querySelector("#name").value.trim(),
+        photo : document.querySelector("#photo").value.trim(),
+
+        scores : document.querySelector("#q1").value.trim(),
+        scores : document.querySelector("#q2").value.trim(),
+        scores : document.querySelector("#q3").value.trim(),
+        scores : document.querySelector("#q4").value.trim(),
+        scores : document.querySelector("#q5").value.trim(),
+        scores : document.querySelector("#q6").value.trim(),
+        scores : document.querySelector("#q7").value.trim(),
+        scores : document.querySelector("#q8").value.trim(),
+        scores : document.querySelector("#q9").value.trim(),
+        scores : document.querySelector("#q10").value.trim()
+    // use as reference to querySelect =>  customerName: document.querySelector("#reserve-name").value.trim(),
+    };
+
+    console.log(surveyData);
+});
+  
+</script>
+
