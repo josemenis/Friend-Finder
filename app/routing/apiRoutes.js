@@ -26,29 +26,30 @@ module.exports = function (app) {
     // ---------------------------------------------------------------------------
     // This is what happens when the server recieves a post request
     app.post("/api/testfriends", function (req, res) {
-        // req.body is available since we're using the body parsing middleware
+        // Below code was copied from the video that demoed this assignment
+        // need to figure out why it doesn't work correctly
+        // =================================================================
         let bestMatch = {
             name: "",
             photo: "",
+            // this will track the difference between the answers to question values
             friendDifference: 1000
         };
+        // req.body is available since we're using the body parsing middleware
         console.log(req.body);
-        // req.body will become new friend data
-        let userData = req.body;
-        // scores from user data assigned to userScores
-        let userScores = userData.scores;
+        // The surveyData (req.body) and scores are stored in the variables
+        let surveyData = req.body;
+        let surveyScores = surveyData.scores;
         // will be used to calculate the difference between each user
         let totalDifference = 0;
-        // loop over friends data
-        // for each iteration grab a current friend
-        // save current friend in aa variable
+        // nested for loop, loops over friends, then over scores
         for (var i = 0; i < friends.length; i++) {
             console.log(friends[i]);
             totalDifference = 0;
             // then loop over current friend scores
             for (var s = 0; s < friends[i].scores[s]; s++) {
-                totalDifference = Math.abs(parseInt(userScores[s]) - parseInt(friends[i].scores[s]));
-                
+                totalDifference += Math.abs(parseInt(surveyScores[s]) - parseInt(friends[i].scores[s]));
+
                 // compare current index to index, js method for absolute diff.
                 if (totalDifference <= bestMatch.friendDifference) {
                     bestMatch.name = friends[i].name;
@@ -57,7 +58,8 @@ module.exports = function (app) {
                 }
             }
         }
-        friends.push(userData);
+
+        friends.push(surveyData);
         res.json(bestMatch);
     });
 };
