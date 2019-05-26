@@ -15,6 +15,7 @@ module.exports = function (app) {
     // ---------------------------------------------------------------------------
     // This is what happens when the server recieves a get request, is on stanby listening
     app.get("/api/testfriends", function (req, res) {
+        // this route will view all the friends
         res.json(friends);
     });
 
@@ -26,29 +27,37 @@ module.exports = function (app) {
     // This is what happens when the server recieves a post request
     app.post("/api/testfriends", function (req, res) {
         // req.body is available since we're using the body parsing middleware
-
-        // req.body will become new friend data
-        // var for req.body
+        let bestMatch = {
+            name: "",
+            photo: "",
+            friendDifference: 1000
+        };
         console.log(req.body);
-        // loop over friends array
+        // req.body will become new friend data
+        let userData = req.body;
+        // scores from user data assigned to userScores
+        let userScores = userData.scores;
+        // will be used to calculate the difference between each user
+        let totalDifference = 0;
+        // loop over friends data
         // for each iteration grab a current friend
         // save current friend in aa variable
-        // then loop over current friend scores
-        // compare current index to index, js method for absolute diff.
+        for (var i = 0; i < friends.length; i++) {
+            console.log(friends[i]);
+            totalDifference = 0;
+            // then loop over current friend scores
+            for (var s = 0; s < friends[i].scores[s]; s++) {
+                totalDifference = Math.abs(parseInt(userScores[s]) - parseInt(friends[i].scores[s]));
+                
+                // compare current index to index, js method for absolute diff.
+                if (totalDifference <= bestMatch.friendDifference) {
+                    bestMatch.name = friends[i].name;
+                    bestMatch.photo = friends[i].photo;
+                    bestMatch.friendDifference = totalDifference;
+                }
+            }
+        }
+        friends.push(userData);
+        res.json(bestMatch);
     });
 };
-
-// ========================================================================
-// Below might be used for app.post but modified
-// //  Create a `get` route called `/icecream/:name`. When the route is hit,
-// // it should display the `icecream.handlebars` template.
-// app.get(`/icecreams/:name`, function (req, res) {
-//     // concise loop, cannot break out of loop goes from beginning to end
-//     // variable
-//     for (let icecream of icecreams) {
-//         if (icecream.name === req.params.name) {
-//             return res.render('icecream', icecream)
-//         }
-//     }
-//     // res.render('icecream')
-// });
