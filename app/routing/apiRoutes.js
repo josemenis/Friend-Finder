@@ -27,7 +27,7 @@ module.exports = function (app) {
     // This is what happens when the server recieves a post request
     app.post("/api/testfriends", function (req, res) {
         // Below code was copied from the video that demoed this assignment
-        // need to figure out why it doesn't work correctly
+        // need to understand each individual line of code to understand the logic
         // =================================================================
         let bestMatch = {
             name: "",
@@ -58,8 +58,51 @@ module.exports = function (app) {
                 }
             }
         }
-
+        // this pushes the surveyData to the friends variable
         friends.push(surveyData);
+        // not sure what this does
         res.json(bestMatch);
     });
 };
+   /*6. Determine the user's most compatible friend using the following as a guide:
+
+   * Convert each user's results into a simple array of numbers (ex: `[5, 1, 4, 4, 5, 1, 2, 5, 4, 1]`).
+   * With that done, compare the difference between current user's scores against those from other users, question by question. Add up the differences to calculate the `totalDifference`.
+     * Example:
+       * User 1: `[5, 1, 4, 4, 5, 1, 2, 5, 4, 1]`
+       * User 2: `[3, 2, 6, 4, 5, 1, 2, 5, 4, 1]`
+       * Total Difference: **2 + 1 + 2 =** **_5_**
+   * Remember to use the absolute value of the differences. Put another way: no negative solutions! Your app should calculate both `5-3` and `3-5` as `2`, and so on.
+   * =====================================================================================================================================================================
+   * this is me trying to understand the logic for this 
+  1. let surveyData = req.body; bc a variable is needed to store survey data
+  2. let surveyScores = surveyData.scores; bc the scores need to be separately stored due to the diff. values.
+     let totalDifference = 0 since it is an integer used in a equation.
+  
+  3. Step 6 says to use absolute value, so the method math.abs does that. It won't let an equation have a negative number.
+  
+  4. Attempt to understand how to logically get to the point to have to use a for loop.
+        totalDifference = math.abs(parseInt(surveyScores) - parseInt(friends.'something')) 
+        ==>>> to get the correct values to complete the equation, need to loop through friends and loop through scores within that 
+   
+        5. for (var i = 0; i < friends.length; i ++) {
+                then console log(friends[i]) to see the results, not sure how to console log this
+        6.now I'm after the scores, so I need to loop through the scores within the loop
+            for (var s = 0; s <friends[i].scores[s]; s ++) {
+                "NOW I CAN COMPLETE THE EQUATION TOTAL DIFFERENCE"
+                 totalDifference = math.abs(parseInt(surveyScores[s]) - parseInt(friends[i].scores[s]));
+        
+                 7. Now that the equation is done, I can use it to find this below.
+                 * The closest match will be the user with the least amount of difference.
+                 --If totalDifference (which subtracts survey scores from friendsArray scores) is < or = to 'something'
+
+                 8. What is the something that totalDifference needs to be < || === to? That scores of data in the friendsArray!
+                 9. create a variable to hold friendsArray key: values
+            }
+        }
+        
+        
+  
+7. Once you've found the current user's most compatible friend, display the result as a modal pop-up.
+   * The modal should display both the name and picture of the closest match.
+   */

@@ -6,6 +6,7 @@ var express = require("express");
 var path = require("path");
 // THIS FUCKING BODYPARSER BELOW IS WHAT HELD UP THE DATA FROM ADDING TO THE ARRAY!!
 var bodyParser = require('body-parser')
+// https://stackoverflow.com/questions/18649881/handling-input-arrays-in-express-forms
 // ==============================================================================
 // EXPRESS CONFIGURATION
 // This sets up the basic properties for our express server
@@ -17,6 +18,7 @@ var PORT = process.env.PORT || 8080;
 // ==================================================================
 // Sets up the Express app to handle data parsing
 // THIS FUCKING BODYPARSER BELOW IS WHAT HELD UP THE DATA FROM ADDING TO THE ARRAY!!
+// https://stackoverflow.com/questions/18649881/handling-input-arrays-in-express-forms
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 // ================================================================================
