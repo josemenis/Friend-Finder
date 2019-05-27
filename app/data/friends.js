@@ -1,12 +1,12 @@
 var friendsArray = [
     {
-    "name":"TEST",
-    "photo":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+    "name":"Fire",
+    "photo":"https://cdn.pixabay.com/photo/2015/09/27/19/50/fire-heart-961194_960_720.jpg",
     "scores":[
-        5,
+        2,
         1,
-        4,
-        4,
+        3,
+        5,
         5,
         1,
         2,
@@ -16,19 +16,51 @@ var friendsArray = [
       ]
   },
     {
-    "name":"TEST1",
-    "photo":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+    "name":"Water",
+    "photo":"https://cdn.pixabay.com/photo/2014/12/24/05/02/drops-of-water-578897__340.jpg",
     "scores":[
-        5,
         1,
-        4,
-        4,
-        5,
         1,
         2,
-        5,
+        3,
+        4,
+        2,
+        2,
+        3,
         4,
         1
+      ]
+  },
+    {
+    "name":"Earth",
+    "photo":"https://cdn.pixabay.com/photo/2014/12/24/05/02/drops-of-water-578897__340.jpg",
+    "scores":[
+        3,
+        3,
+        4,
+        4,
+        4,
+        2,
+        2,
+        3,
+        4,
+        5
+      ]
+  },
+    {
+    "name":"Wind",
+    "photo":"http://energy.gov/sites/prod/files/wv_theme2_image.jpg",
+    "scores":[
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        5
       ]
   },
   

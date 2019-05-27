@@ -4,6 +4,8 @@
 // ==============================================================================
 var express = require("express");
 var path = require("path");
+// THIS FUCKING BODYPARSER BELOW IS WHAT HELD UP THE DATA FROM ADDING TO THE ARRAY!!
+var bodyParser = require('body-parser')
 // ==============================================================================
 // EXPRESS CONFIGURATION
 // This sets up the basic properties for our express server
@@ -12,8 +14,10 @@ var path = require("path");
 var app = express();
 // Sets an initial port. We"ll use this later in our listener
 var PORT = process.env.PORT || 8080;
+// ==================================================================
 // Sets up the Express app to handle data parsing
-app.use(express.urlencoded({ extended: true }));
+// THIS FUCKING BODYPARSER BELOW IS WHAT HELD UP THE DATA FROM ADDING TO THE ARRAY!!
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 // ================================================================================
 // ROUTER
@@ -24,10 +28,10 @@ app.use(express.json());
 require("./app/routing/apiRoutes")(app)
 require("./app/routing/htmlRoutes")(app);
 // =============================================================================
-// TEST GET method route
-app.get('/', function (req, res) {
-    res.send('Testing the connection player!!')
-  })
+// // TEST GET method route
+// app.get('/', function (req, res) {
+//     res.send('Testing the connection player!!')
+//   })
 // =============================================================================
 // LISTENER
 // The below code effectively "starts" our server
