@@ -4,10 +4,7 @@
 // ==============================================================================
 var express = require("express");
 var path = require("path");
-// THIS FUCKING BODYPARSER BELOW IS WHAT HELD UP THE DATA FROM ADDING TO THE ARRAY!!
-var bodyParser = require('body-parser')
-// https://stackoverflow.com/questions/18649881/handling-input-arrays-in-express-forms
-// ==============================================================================
+
 // EXPRESS CONFIGURATION
 // This sets up the basic properties for our express server
 // ==============================================================================
@@ -15,11 +12,19 @@ var bodyParser = require('body-parser')
 var app = express();
 // Sets an initial port. We"ll use this later in our listener
 var PORT = process.env.PORT || 8080;
-// ==================================================================
+
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  !!!!!!!!!!!!!!!!!!!!
+// !!!!!!!!!!!!!!!!!!!  VERY IMPORTANT NOTE BELOW, THIS CHANGED THE GAME!!  !!!!!!!!!!!!!!!!!!!!
+// !!!!!!!!!!!!!!!!!!!  BODYPARSING THE DATA IS WHAT HELD UP FROM ADDING TO THE ARRAY, !!
+// !!!!!!!!!!!!!!!!!!!  var bodyParser = require('body-parser')
+// !!!!!!!!!!!!!!!!!!!  https://stackoverflow.com/questions/18649881/handling-input-arrays-in-express-forms
+// !!!!!!!!!!!!!!!!!!!  app.use(bodyParser.urlencoded({ extended: true }));
+// !!!!!!!!!!!!!!!!!!!  NOTE: GOT RID OF LINES OF CODE ABOVE & replaced it with, .then(res => res.json()) in survey.html after fetch, in line 313
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
 // Sets up the Express app to handle data parsing
-// THIS FUCKING BODYPARSER BELOW IS WHAT HELD UP THE DATA FROM ADDING TO THE ARRAY!!
-// https://stackoverflow.com/questions/18649881/handling-input-arrays-in-express-forms
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // ================================================================================
 // ROUTER
@@ -38,6 +43,6 @@ require("./app/routing/htmlRoutes")(app);
 // LISTENER
 // The below code effectively "starts" our server
 // =============================================================================
-app.listen(PORT, function() {
+app.listen(PORT, function () {
   console.log(`App listening on PORT ${PORT}`);
 });

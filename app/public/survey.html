@@ -177,9 +177,17 @@
                         href="https://github.com/josemenis/Friend-Finder">GitHub Repo</a></p>
             </div>
         </footer>
-
     </div>
+<!-- Large modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
 
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      ...
+    </div>
+  </div>
+</div>
 
     </div>
     <!-- Optional JavaScript -->
@@ -215,7 +223,7 @@
                 isFormValid = false
                 alert("Name and photo are required")
             };
-            // Wasn't sure how to loop this below so I repeated code 10 times
+            // Wasn't sure how to loop this below so I repeated code 10 times, D.R.Y. JOSE!!
             if (!document.querySelector("#q1").value) {
                 isFormValid = false
                 alert("Please answer all quesitons");
@@ -248,7 +256,7 @@
                 alert("Please answer all quesitons");
             };
             // =============================================================================================
-            // // below code for scores array, got help from Adliano
+            // // below code for scores array, got help from Adliano, I need to figure this out for cleaner code. D.R.Y. "Don't Repeat YOurself"
             //             //create the array scores for the values.
             //             let scores = [];
 
@@ -278,7 +286,7 @@
                 // where scores its a array with the numbers
                 // scores: scores
 
-                // Wasn't sure how to loop this below so I repeated code 10 times
+                // Wasn't sure how to loop this below so I repeated code 10 times, D.R.Y. Jose!!
                 scores: [
                     parseInt(document.querySelector("#q1").value.trim()),
                     parseInt(document.querySelector("#q2").value.trim()),
@@ -300,7 +308,11 @@
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(surveyData)
-            }).then(
+            })
+            // Below line of code, parses the response from the server 5/27/19, in app.js I previously used a bodyparser npm to add survey data to friendsArray.
+            .then(res => res.json())
+            // Above line of code, this one line of code, using express w/o the bodyparser npm not only added to the friendsArray but made the equation work as well!! Thanks Adliano. 
+            .then(
                 // When submit button is pressed, friends.js friendsArray + submitted form data is 
                 // displayed in the listening terminal.
                 function (anything) {
