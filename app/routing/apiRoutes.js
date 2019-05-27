@@ -38,6 +38,7 @@ module.exports = function (app) {
         // req.body is available since we're using the body parsing middleware
         console.log(req.body);
         // The surveyData (req.body) and scores are stored in the variables
+        // !!!!!!!!  info from frontend is stored in the body of the request !!!!!!
         let surveyData = req.body;
         let surveyScores = surveyData.scores;
         // will be used to calculate the difference between each user
@@ -51,16 +52,16 @@ module.exports = function (app) {
                 totalDifference += Math.abs(parseInt(surveyScores[s]) - parseInt(friends[i].scores[s]));
 
                 // compare current index to index, js method for absolute diff.
-                if (totalDifference <= bestMatch.friendDifference) {
-                    bestMatch.name = friends[i].name;
-                    bestMatch.photo = friends[i].photo;
-                    bestMatch.friendDifference = totalDifference;
-                }
             }
+                    if (totalDifference <= bestMatch.friendDifference) {
+                        bestMatch.name = friends[i].name;
+                        bestMatch.photo = friends[i].photo;
+                        bestMatch.friendDifference = totalDifference;
+                    }
         }
         // this pushes the surveyData to the friends variable
         friends.push(surveyData);
-        // not sure what this does
+        // response is sent back to survey.html
         res.json(bestMatch);
     });
 };
@@ -90,7 +91,10 @@ module.exports = function (app) {
         6.now I'm after the scores, so I need to loop through the scores within the loop
             for (var s = 0; s <friends[i].scores[s]; s ++) {
                 "NOW I CAN COMPLETE THE EQUATION TOTAL DIFFERENCE"
-                 totalDifference = math.abs(parseInt(surveyScores[s]) - parseInt(friends[i].scores[s]));
+                 totalDifference += math.abs(parseInt(surveyScores[s]) - parseInt(friends[i].scores[s]));
+or can be written like this
+                 totalDifference =  totalDifference + (math.abs(parseInt(surveyScores[s]) - parseInt(friends[i].scores[s])));
+
         
                  7. Now that the equation is done, I can use it to find this below.
                  * The closest match will be the user with the least amount of difference.
