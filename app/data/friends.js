@@ -33,7 +33,7 @@ var friendsArray = [
   },
     {
     "name":"Earth",
-    "photo":"https://cdn.pixabay.com/photo/2014/12/24/05/02/drops-of-water-578897__340.jpg",
+    "photo":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5-XB3mLQ-NHWo-H2EbMm-38rN8hL6GiM_LSCl8FLVjMIAXnyfMQ",
     "scores":[
         3,
         3,
@@ -49,7 +49,7 @@ var friendsArray = [
   },
     {
     "name":"Wind",
-    "photo":"http://energy.gov/sites/prod/files/wv_theme2_image.jpg",
+    "photo":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRFdCK0nYAg2rkEiu7yy1-lVHTcfWYLPqbUjTNoqAp-kYshUVG",
     "scores":[
         1,
         1,
