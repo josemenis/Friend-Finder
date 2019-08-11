@@ -5,7 +5,9 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app"
+    "start": "nodemon app",
+    "lint": "standard --verbose | snazzy",
+    "fix": "standard --fix ."
   },
   "repository": {
     "type": "git",
@@ -20,7 +22,8 @@
   "homepage": "https://github.com/josemenis/Friend-Finder#readme",
   "dependencies": {
     "express": "^4.17.0",
-    "nodemon": "^1.19.1"
+    "nodemon": "^1.19.1",
+    "standard": "^12.0.1"
   },
   "devDependencies": {}
 }
