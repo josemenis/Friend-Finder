@@ -3,6 +3,8 @@
 ### Overview
 
   ## A compatibility-based "FriendFinder" application -- basically a dating app. This full-stack site will take in results from the users' surveys, then compare their answers with those from other users. The app will then display the name and picture of the user with the best overall match.
+  
+  [Link to App](https://cryptic-waters-90353.herokuapp.com/survey)
 ---
 ### How the app works:
 
@@ -12,6 +14,9 @@
 
    * A GET Route to `/survey` which displays the survey page.
    * A default, catch-all route that leads to `index.html` which displays the home page.
+---
+![default](images/FriendF.PNG)
+![check values](images/FriendFCheck.PNG)
 
 * 3. `apiRoutes.js` file contains two routes:
 
@@ -24,3 +29,5 @@
 
 * 6. The current user's most compatible friend is displayed as a modal pop-up,
    * which has both the name and picture of the closest match.
+   ---
+![modal](iomages/FriendFModal.PNG)
