@@ -30,4 +30,4 @@
 * 6. The current user's most compatible friend is displayed as a modal pop-up,
    * which has both the name and picture of the closest match.
    ---
-![modal](iomages/FriendFModal.PNG)
+![modal](images/FriendFModal.PNG)
